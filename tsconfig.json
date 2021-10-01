@@ -20,5 +20,6 @@
     "noImplicitThis": true,
     "strictNullChecks": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/globalTypes.ts"]
 }

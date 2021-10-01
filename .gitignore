@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# development
+**/__generated__
+src/globalTypes.ts
+
 # dependencies
 /node_modules
 /.pnp

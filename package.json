@@ -23,6 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "typings": "rimraf ./src/**/*__generated__ && apollo client:codegen --target=typescript --endpoint=https://rickandmortyapi.com/graphql --globalTypesFile=src/globalTypes.ts",
     "lint": "yarn eslint \"**/*.{js,ts,tsx}\"",
     "lint:fix": "yarn lint --fix"
   },
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
+    "apollo": "^2.33.6",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-airbnb-typescript": "14.0.0",
