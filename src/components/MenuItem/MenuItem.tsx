@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useWindowSize } from 'react-use';
 
 import { MAIN_BREAKPOINT, MAIN_BREAKPOINT_WITHOUT_PX } from 'constants/breakpoints';
+import { useWindowSize } from 'hooks/useWindowSize';
 import styled from 'styled-components';
 import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
 
