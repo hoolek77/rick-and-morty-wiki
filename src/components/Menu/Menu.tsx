@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from 'assets/smallLogo.png';
 import { HamburgerMenuIcon } from 'components/HamburgerMenuIcon';
 import { MenuItem } from 'components/MenuItem';
-import { MENU_BREAKPOINT } from 'constants/menuBreakpoint';
+import { MAIN_BREAKPOINT } from 'constants/breakpoints';
 import { ROUTES } from 'constants/routes';
 import styled from 'styled-components';
 
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 0 10%;
 
-  @media (max-width: ${MENU_BREAKPOINT}) {
+  @media (max-width: ${MAIN_BREAKPOINT}) {
     padding: 0 5%;
   }
 `;
@@ -31,7 +31,7 @@ const MenuItemsWrapper = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media (max-width: ${MENU_BREAKPOINT}) {
+  @media (max-width: ${MAIN_BREAKPOINT}) {
     display: none;
   }
 `;
@@ -39,7 +39,7 @@ const MenuItemsWrapper = styled.div`
 const HamburgerMenuWrapper = styled.div<{ isMenu: boolean }>`
   display: none;
 
-  @media (max-width: ${MENU_BREAKPOINT}) {
+  @media (max-width: ${MAIN_BREAKPOINT}) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,7 +63,7 @@ export const Menu = () => {
   return (
     <Wrapper>
       <Link to="/">
-        <Logo src={logo} />
+        <Logo src={logo} alt="rick-and-morty-logo" />
       </Link>
       <MenuItemsWrapper>
         {ROUTES.map((route) => (

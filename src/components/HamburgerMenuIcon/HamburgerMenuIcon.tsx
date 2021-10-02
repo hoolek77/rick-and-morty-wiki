@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 
-import { MENU_BREAKPOINT } from 'constants/menuBreakpoint';
+import { MAIN_BREAKPOINT } from 'constants/breakpoints';
 import styled from 'styled-components';
 
 interface Props {
@@ -12,7 +12,7 @@ const Icon = styled.div<{ isMenu: boolean }>`
   width: 2rem;
   height: 2rem;
   display: none;
-  @media (max-width: ${MENU_BREAKPOINT}) {
+  @media (max-width: ${MAIN_BREAKPOINT}) {
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;
