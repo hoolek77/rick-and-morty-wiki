@@ -1,11 +1,24 @@
+const fonts = {
+  primary: 'Robot, sans-serif',
+  secondary: 'Karla, sans-serif',
+};
+
 export const theme = {
   light: {
-    primary: '#E5E5E5',
+    primary: '#FFFFFF',
+    secondary: '#E5E5E5',
+    hamburgerMenuIcon: 'rgba(0,0,0, .54)',
+    hoverPrimary: '#97CE4C',
     fontPrimary: '#000000',
+    fonts,
   },
   dark: {
-    primary: '#E5E5E5',
+    primary: '#FFFFFF',
+    secondary: '#E5E5E5',
+    hamburgerMenuIcon: 'rgba(0,0,0, .54)',
+    hoverPrimary: '#97CE4C',
     fontPrimary: '#000000',
+    fonts,
   },
 };
 

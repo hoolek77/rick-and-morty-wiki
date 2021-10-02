@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   html {
-    font-family: "Asap", sans-serif;
+    font-family: ${({ theme }) => theme.fonts.primary};
     width: 100%;
     height: 100%;
     scroll-behavior: smooth;
