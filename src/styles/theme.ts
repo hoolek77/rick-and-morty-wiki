@@ -10,6 +10,7 @@ export const theme = {
     hamburgerMenuIcon: 'rgba(0,0,0, .54)',
     hoverPrimary: '#97CE4C',
     fontPrimary: '#000000',
+    fontSecondary: 'rgba(0, 0, 0, 0.6)',
     fonts,
   },
   dark: {
@@ -18,6 +19,7 @@ export const theme = {
     hamburgerMenuIcon: 'rgba(0,0,0, .54)',
     hoverPrimary: '#97CE4C',
     fontPrimary: '#000000',
+    fontSecondary: 'rgba(0, 0, 0, 0.6)',
     fonts,
   },
 };
