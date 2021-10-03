@@ -2,7 +2,6 @@
 
 # development
 **/__generated__
-src/globalTypes.ts
 .vscode
 
 # dependencies

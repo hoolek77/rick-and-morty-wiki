@@ -1,13 +1,9 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 
+import { CharactersResult } from 'hooks/useCharacters';
 import styled from 'styled-components';
 
-interface Props extends ComponentPropsWithoutRef<'div'> {
-  id: string;
-  src: string;
-  name: string;
-  species: string;
-}
+type Props = ComponentPropsWithoutRef<'div'> & CharactersResult;
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,6 +13,17 @@ const Wrapper = styled.div`
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
   overflow: hidden;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
 `;
 
 const CharacterImage = styled.img`
@@ -43,10 +50,10 @@ const CharacterSpecies = styled.div`
   color: ${({ theme }) => theme.fontSecondary};
 `;
 
-export const CharacterCard = ({ name, species, src, ...props }: Props) => {
+export const CharacterCard = ({ name, species, image, ...props }: Props) => {
   return (
     <Wrapper {...props}>
-      <CharacterImage src={src} alt={name} />
+      <CharacterImage src={image} alt={name} />
       <CharacterDetails>
         <CharacterName>{name}</CharacterName>
         <CharacterSpecies>{species}</CharacterSpecies>

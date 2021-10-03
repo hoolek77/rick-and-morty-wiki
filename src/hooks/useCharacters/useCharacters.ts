@@ -1,7 +1,22 @@
 import { useQuery } from '@apollo/client';
 
-import { AllCharacters, AllCharactersVariables } from './__generated__/AllCharacters';
+import { AllCharactersVariables } from './__generated__/AllCharacters';
 import { CHARACTERS_QUERY } from './query';
+
+export type CharactersResult = {
+  id: string;
+  name: string;
+  species: string;
+  image: string;
+};
+
+type Characters = {
+  results: CharactersResult[];
+};
+
+type AllCharacters = {
+  characters: Characters;
+};
 
 export const useCharacters = () => {
   const { data, loading, error } = useQuery<AllCharacters, AllCharactersVariables>(CHARACTERS_QUERY, {
@@ -11,7 +26,7 @@ export const useCharacters = () => {
   });
 
   return {
-    data: data?.characters?.results,
+    data: data?.characters?.results || [],
     loading,
     error,
   };
