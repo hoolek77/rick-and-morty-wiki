@@ -9,10 +9,11 @@ interface Props {
 }
 
 const Wrapper = styled.div`
-  display: flex;
+  display: grid;
   width: 80%;
-  flex-wrap: wrap;
-  column-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 16px;
+  justify-items: center;
 `;
 
 export const CharactersList = ({ characters }: Props) => {
