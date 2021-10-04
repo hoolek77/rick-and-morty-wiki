@@ -1,5 +1,6 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 
+import { buttonAnimation } from 'animations/buttons';
 import { CharactersResult } from 'hooks/useCharacters';
 import styled from 'styled-components';
 
@@ -14,15 +15,8 @@ const Wrapper = styled.div`
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.2s;
 
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(1);
-  }
+  ${buttonAnimation}
 `;
 
 const CharacterImage = styled.img`
