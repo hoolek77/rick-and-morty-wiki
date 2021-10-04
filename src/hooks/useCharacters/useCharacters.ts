@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useQuery } from '@apollo/client';
 
 import { AllCharacters_characters_info, AllCharactersVariables } from './__generated__/AllCharacters';
@@ -22,34 +20,17 @@ type AllCharacters = {
 };
 
 export const useCharacters = () => {
-  const [nextPage, setNextPage] = useState<number | null>(2);
   const { data, loading, error, fetchMore } = useQuery<AllCharacters, AllCharactersVariables>(CHARACTERS_QUERY, {
     variables: {
       page: 1,
     },
   });
 
+  const next = data?.characters.info.next;
+
   const loadMoreCharacters = () => {
-    if (!nextPage) return;
-
     fetchMore({
-      variables: { page: nextPage },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        const newInfo = fetchMoreResult?.characters.info || { next: null };
-        const newResult = fetchMoreResult?.characters.results || [];
-
-        setNextPage(newInfo.next);
-
-        return {
-          characters: {
-            results: [...previousResult.characters.results, ...newResult],
-            info: {
-              __typename: 'Info',
-              next: newInfo.next,
-            },
-          },
-        };
-      },
+      variables: { page: next },
     });
   };
 
@@ -58,6 +39,6 @@ export const useCharacters = () => {
     loading,
     error,
     loadMoreCharacters,
-    isNextPage: !!nextPage,
+    isNextPage: !!next,
   };
 };

@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 
-import { ApolloClient, ApolloProvider as Provider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider as Provider } from '@apollo/client';
+import { cache } from 'constants/cache';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',
-  cache: new InMemoryCache(),
+  cache,
 });
 
 export const ApolloProvider: FC = ({ children }) => {
