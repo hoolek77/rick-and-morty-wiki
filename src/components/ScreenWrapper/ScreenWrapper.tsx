@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: calc(100vh - 120px);
 `;
 
 interface Props extends ComponentPropsWithoutRef<'div'> {

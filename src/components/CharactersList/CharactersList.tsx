@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-gap: 16px;
   justify-items: center;
+  margin-bottom: 48px;
 `;
 
 export const CharactersList = ({ characters }: Props) => {

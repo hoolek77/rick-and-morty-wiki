@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+import { Footer } from 'components/Footer';
 import { Menu } from 'components/Menu';
 import { Characters } from 'screens/Characters';
 import { Episodes } from 'screens/Episodes';
@@ -24,6 +25,7 @@ export const App = () => {
           <Episodes />
         </Route>
       </Switch>
+      <Footer />
     </>
   );
 };
