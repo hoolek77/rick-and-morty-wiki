@@ -10,6 +10,9 @@ export const CHARACTERS_QUERY = gql`
         species
         image
       }
+      info {
+        next
+      }
     }
   }
 `;

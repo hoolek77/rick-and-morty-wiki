@@ -54,24 +54,6 @@ module.exports = {
     // Disallows to create generics that explicitly extends `unknown` as it's the default TS behavior.
     '@typescript-eslint/no-unnecessary-type-constraint': 2,
 
-    // Enforces some naming conventions across the codebase.
-    '@typescript-eslint/naming-convention': [
-      2,
-      { selector: 'default', leadingUnderscore: 'allow', format: ['camelCase', 'UPPER_CASE', 'PascalCase'] },
-      { selector: 'function', format: ['camelCase', 'PascalCase'] },
-      { selector: 'parameter', format: ['camelCase'], leadingUnderscore: 'allow' },
-      { selector: 'typeLike', format: ['PascalCase'] },
-
-      // Interfaces shouldn't be prefixed with `I`.
-      { selector: 'interface', format: ['PascalCase'], custom: { regex: '^I[A-Z]', match: false } },
-
-      // Types shouldn't be prefixed with `T`.
-      { selector: 'typeAlias', format: ['PascalCase'], custom: { regex: '^T[A-Z]', match: false } },
-
-      // Generics should have meaningful names instead of one-letters.
-      { selector: 'typeParameter', format: ['PascalCase'], custom: { regex: '[a-zA-Z]{2,}', match: true } },
-    ],
-
     // Disabled as we're using simple-import-sort plugin.
     'import/order': 0,
 
