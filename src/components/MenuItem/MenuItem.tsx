@@ -2,12 +2,13 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { MAIN_BREAKPOINT, MAIN_BREAKPOINT_WITHOUT_PX } from 'constants/breakpoints';
+import { Routes } from 'constants/routes';
 import { useWindowSize } from 'hooks/useWindowSize';
 import styled from 'styled-components';
-import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
+import { capitalizeFirstLetter } from 'utils/strings';
 
 interface Props {
-  name: string;
+  name: Routes;
   setIsMenu?: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -30,6 +31,22 @@ const Link = styled(RouterLink)`
   }
 `;
 
+const getEmoji = (name: Routes) => {
+  if (name === 'characters') {
+    return '👽';
+  }
+
+  if (name === 'locations') {
+    return '🗺';
+  }
+
+  if (name === 'episodes') {
+    return '🎬';
+  }
+
+  return '';
+};
+
 export const MenuItem = ({ name, setIsMenu = () => {} }: Props) => {
   const { width } = useWindowSize();
 
@@ -41,7 +58,7 @@ export const MenuItem = ({ name, setIsMenu = () => {} }: Props) => {
 
   return (
     <Link to={name} onClick={handleMenuItemClick}>
-      {capitalizeFirstLetter(name)}
+      {capitalizeFirstLetter(name)} {getEmoji(name)}
     </Link>
   );
 };
