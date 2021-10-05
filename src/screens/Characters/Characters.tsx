@@ -5,6 +5,7 @@ import { CharactersList } from 'components/CharactersList';
 import { LoadMoreButton } from 'components/LoadMoreButton';
 import { ScreenImage } from 'components/ScreenImage';
 import { ScreenWrapper } from 'components/ScreenWrapper';
+import { SearchInput } from 'components/SearchInput';
 import { useCharacters } from 'hooks/useCharacters';
 
 export const Characters = () => {
@@ -13,6 +14,7 @@ export const Characters = () => {
   return (
     <ScreenWrapper>
       <ScreenImage src={charactersLogo} alt="characters" />
+      <SearchInput placeholder="Filter by name..." />
       <CharactersList characters={data} />
       {isNextPage && <LoadMoreButton onClick={loadMoreCharacters} />}
     </ScreenWrapper>
