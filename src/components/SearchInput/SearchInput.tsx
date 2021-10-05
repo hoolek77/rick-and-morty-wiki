@@ -11,16 +11,21 @@ const Wrapper = styled.div`
   position: relative;
   width: 240px;
   height: 56px;
+  margin: 8px;
 `;
 
 const Input = styled.input`
   height: 100%;
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.inputColor};
+  border: 1px solid ${({ theme }) => theme.input};
   border-radius: 8px;
   font-size: 16px;
   padding-left: 48px;
-  color: ${({ theme }) => theme.inputColor};
+  color: ${({ theme }) => theme.input};
+
+  &:hover {
+    border-color: #cbd5e0;
+  }
 `;
 
 const SearchIcon = styled.img`
