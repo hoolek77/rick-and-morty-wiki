@@ -20,11 +20,14 @@ type AllCharacters = {
 };
 
 export const useCharacters = () => {
-  const { data, loading, error, fetchMore } = useQuery<AllCharacters, AllCharactersVariables>(CHARACTERS_QUERY, {
-    variables: {
-      page: 1,
+  const { data, loading, error, fetchMore, refetch } = useQuery<AllCharacters, AllCharactersVariables>(
+    CHARACTERS_QUERY,
+    {
+      variables: {
+        page: 1,
+      },
     },
-  });
+  );
 
   const next = data?.characters.info.next;
 
@@ -40,5 +43,6 @@ export const useCharacters = () => {
     error,
     loadMoreCharacters,
     isNextPage: !!next,
+    refetch,
   };
 };
