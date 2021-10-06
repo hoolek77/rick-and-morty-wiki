@@ -57,7 +57,7 @@ export const MenuItem = ({ name, setIsMenu = () => {} }: Props) => {
   };
 
   return (
-    <Link to={name} onClick={handleMenuItemClick}>
+    <Link to={`/${name}`} onClick={handleMenuItemClick}>
       {capitalizeFirstLetter(name)} {getEmoji(name)}
     </Link>
   );

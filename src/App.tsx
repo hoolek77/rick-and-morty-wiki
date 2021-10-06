@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { Footer } from 'components/Footer';
 import { Menu } from 'components/Menu';
+import { CharacterDetails } from 'screens/CharacterDetails';
 import { Characters } from 'screens/Characters';
 import { Episodes } from 'screens/Episodes';
 import { Locations } from 'screens/Locations';
@@ -17,6 +18,9 @@ export const App = () => {
         </Route>
         <Route path="/characters" exact>
           <Characters />
+        </Route>
+        <Route path="/characters/:id" exact>
+          <CharacterDetails />
         </Route>
         <Route path="/locations" exact>
           <Locations />

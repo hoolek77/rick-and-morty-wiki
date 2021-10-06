@@ -20,6 +20,7 @@ type CharacterEpisode = {
   id: string;
   name: string;
   air_date: string;
+  episode: string;
 };
 
 type Character = {
@@ -29,9 +30,11 @@ type Character = {
   status: string;
   species: string;
   origin: CharacterOrigin;
-  type: string;
+  type: string | null;
   location: CharacterLocation;
   episode: CharacterEpisode[];
+  image: string;
+  name: string;
 };
 
 type CharacterDetails = {

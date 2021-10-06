@@ -1,4 +1,5 @@
 import React, { ComponentPropsWithoutRef } from 'react';
+import { Link } from 'react-router-dom';
 
 import { buttonAnimation } from 'animations/buttons';
 import { CharactersResult } from 'hooks/useCharacters';
@@ -43,14 +44,16 @@ const CharacterSpecies = styled.div`
   color: ${({ theme }) => theme.fontSecondary};
 `;
 
-export const CharacterCard = ({ name, species, image, ...props }: Props) => {
+export const CharacterCard = ({ name, species, image, id, ...props }: Props) => {
   return (
-    <Wrapper {...props}>
-      <CharacterImage src={image} alt={name} />
-      <CharacterDetails>
-        <CharacterName>{name}</CharacterName>
-        <CharacterSpecies>{species}</CharacterSpecies>
-      </CharacterDetails>
-    </Wrapper>
+    <Link to={`/characters/${id}`}>
+      <Wrapper {...props}>
+        <CharacterImage src={image} alt={name} />
+        <CharacterDetails>
+          <CharacterName>{name}</CharacterName>
+          <CharacterSpecies>{species}</CharacterSpecies>
+        </CharacterDetails>
+      </Wrapper>
+    </Link>
   );
 };

@@ -1,2 +1,2 @@
-export const MAIN_BREAKPOINT = '580px';
-export const MAIN_BREAKPOINT_WITHOUT_PX = 580;
+export const MAIN_BREAKPOINT = '600px';
+export const MAIN_BREAKPOINT_WITHOUT_PX = 600;

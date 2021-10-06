@@ -5,6 +5,7 @@ export const CHARACTER_DETAILS_QUERY = gql`
     character(id: $id) {
       id
       gender
+      name
       status
       species
       origin {
@@ -20,7 +21,9 @@ export const CHARACTER_DETAILS_QUERY = gql`
         id
         name
         air_date
+        episode
       }
+      image
     }
   }
 `;

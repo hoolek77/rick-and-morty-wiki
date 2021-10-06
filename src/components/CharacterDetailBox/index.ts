@@ -1,0 +1,1 @@
+export { CharacterDetailBox } from './CharacterDetailBox';
