@@ -20,12 +20,13 @@ type AllCharacters = {
 };
 
 export const useCharacters = () => {
-  const { data, loading, error, fetchMore, refetch } = useQuery<AllCharacters, AllCharactersVariables>(
+  const { data, error, fetchMore, refetch, networkStatus } = useQuery<AllCharacters, AllCharactersVariables>(
     CHARACTERS_QUERY,
     {
       variables: {
         page: 1,
       },
+      notifyOnNetworkStatusChange: true,
     },
   );
 
@@ -39,10 +40,10 @@ export const useCharacters = () => {
 
   return {
     data: data?.characters?.results || [],
-    loading,
     error,
     loadMoreCharacters,
     isNextPage: !!next,
     refetch,
+    networkStatus,
   };
 };

@@ -1,11 +1,27 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 
 import { buttonAnimation } from 'animations/buttons';
-import styled from 'styled-components';
+import { Loader as OLoader } from 'components/Loader';
+import styled, { css } from 'styled-components';
 
-type Props = ComponentPropsWithoutRef<'button'>;
+interface Props extends ComponentPropsWithoutRef<'button'> {
+  loading?: boolean;
+  disabled?: boolean;
+}
 
-const Button = styled.button`
+const Loader = styled(OLoader)`
+  width: 32px;
+  height: 32px;
+`;
+
+const disabledButtonStyling = css`
+  background-color: #e5e5e5;
+`;
+
+const Button = styled.button<{ disabled: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 154px;
   height: 36px;
   margin-bottom: 48px;
@@ -18,13 +34,13 @@ const Button = styled.button`
   cursor: pointer;
   background-color: #f2f9fe;
 
-  ${buttonAnimation}
+  ${({ disabled }) => (disabled ? disabledButtonStyling : buttonAnimation)}
 `;
 
-export const LoadMoreButton = ({ ...props }: Props) => {
+export const LoadMoreButton = ({ loading = false, disabled = false, ...props }: Props) => {
   return (
-    <Button type="button" {...props}>
-      Load More
+    <Button type="button" disabled={disabled} {...props}>
+      {loading ? <Loader /> : 'Load More'}
     </Button>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { CharacterDetailBox } from 'components/CharacterDetailBox';
+import { Loader } from 'components/Loader';
 import { ScreenWrapper } from 'components/ScreenWrapper';
 import { useCharacterDetails } from 'hooks/useCharacterDetails';
 import styled from 'styled-components';
@@ -45,7 +46,15 @@ const Section = styled.div`
 
 export const CharacterDetails = () => {
   const id = getIdFromPathname();
-  const { data, error } = useCharacterDetails({ id });
+  const { data, error, loading } = useCharacterDetails({ id });
+
+  if (loading) {
+    return (
+      <ScreenWrapper>
+        <Loader />
+      </ScreenWrapper>
+    );
+  }
 
   if (error || !data || !data.character) {
     return (

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import charactersLogo from 'assets/charactersLogo.png';
 import { CharactersList } from 'components/CharactersList';
 import { InputsWrapper } from 'components/InputsWrapper';
+import { Loader } from 'components/Loader';
 import { LoadMoreButton } from 'components/LoadMoreButton';
 import { ScreenImage } from 'components/ScreenImage';
 import { ScreenWrapper } from 'components/ScreenWrapper';
@@ -10,6 +11,7 @@ import { SearchInput } from 'components/SearchInput';
 import { SelectInput } from 'components/SelectInput';
 import { GENDER, SPECIES, STATUS } from 'constants/charactersOptions';
 import { useCharacters } from 'hooks/useCharacters';
+import { useQueryLoadingStatus } from 'hooks/useQueryLoadingStatus';
 
 type SearchParams = {
   name: string;
@@ -27,7 +29,8 @@ export const Characters = () => {
     gender: '',
     status: '',
   });
-  const { data, loadMoreCharacters, isNextPage, refetch } = useCharacters();
+  const { data, loadMoreCharacters, isNextPage, refetch, networkStatus } = useCharacters();
+  const { isFetchMoreLoading, isInitialOrRefetchLoading } = useQueryLoadingStatus(networkStatus);
 
   const handleChange = (e: { target: HTMLInputElement | HTMLSelectElement }, keyofSearchParams: KeyofSearchParams) => {
     setSearchParams((prev) => ({ ...prev, [keyofSearchParams]: e.target.value }));
@@ -47,8 +50,10 @@ export const Characters = () => {
         <SelectInput placeholder="Gender" options={GENDER} onChange={(e) => handleChange(e, 'gender')} />
         <SelectInput placeholder="Status" options={STATUS} onChange={(e) => handleChange(e, 'status')} />
       </InputsWrapper>
-      <CharactersList characters={data} />
-      {isNextPage && <LoadMoreButton onClick={loadMoreCharacters} />}
+      {isInitialOrRefetchLoading ? <Loader /> : <CharactersList characters={data} />}
+      {isNextPage && (
+        <LoadMoreButton onClick={loadMoreCharacters} loading={isFetchMoreLoading} disabled={isFetchMoreLoading} />
+      )}
     </ScreenWrapper>
   );
 };
