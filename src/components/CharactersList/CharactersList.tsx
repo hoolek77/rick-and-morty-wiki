@@ -1,11 +1,16 @@
 import React from 'react';
 
+import { ApolloError } from '@apollo/client';
 import { CharacterCard } from 'components/CharacterCard';
+import { ErrorMessage } from 'components/ErrorMessage';
+import { Loader } from 'components/Loader';
 import { CharactersResult } from 'hooks/useCharacters';
 import styled from 'styled-components';
 
 interface Props {
   characters: CharactersResult[];
+  loading: boolean;
+  error?: ApolloError;
 }
 
 const Wrapper = styled.div`
@@ -17,7 +22,15 @@ const Wrapper = styled.div`
   margin-bottom: 48px;
 `;
 
-export const CharactersList = ({ characters }: Props) => {
+export const CharactersList = ({ characters, loading, error }: Props) => {
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage>There is nothing here 😵‍💫</ErrorMessage>;
+  }
+
   return (
     <Wrapper>
       {characters?.map((character) => {

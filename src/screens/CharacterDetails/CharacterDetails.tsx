@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { CharacterDetailBox } from 'components/CharacterDetailBox';
+import { ErrorMessage } from 'components/ErrorMessage';
 import { Loader } from 'components/Loader';
 import { ScreenWrapper } from 'components/ScreenWrapper';
 import { useCharacterDetails } from 'hooks/useCharacterDetails';
@@ -58,8 +59,8 @@ export const CharacterDetails = () => {
 
   if (error || !data || !data.character) {
     return (
-      <ScreenWrapper style={{ justifyContent: 'center', fontSize: '24px', fontWeight: 700 }}>
-        There is nothing here 😵‍💫
+      <ScreenWrapper>
+        <ErrorMessage>There is nothing here 😵‍💫</ErrorMessage>
       </ScreenWrapper>
     );
   }
@@ -72,7 +73,7 @@ export const CharacterDetails = () => {
       <CharacterName>{name}</CharacterName>
       <SectionsWrapper>
         <div>
-          <SectionTitle>Informations</SectionTitle>
+          <SectionTitle>Information</SectionTitle>
           <Section>
             <CharacterDetailBox title="Gender" info={gender} />
             <CharacterDetailBox title="Status" info={status} />

@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   margin: auto;
   font-size: 24px;
   font-weight: 700;
+  color: red;
 `;
 
 export const ErrorMessage = ({ children, ...props }: Props) => {

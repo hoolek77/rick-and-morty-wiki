@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import charactersLogo from 'assets/charactersLogo.png';
 import { CharactersList } from 'components/CharactersList';
 import { InputsWrapper } from 'components/InputsWrapper';
-import { Loader } from 'components/Loader';
 import { LoadMoreButton } from 'components/LoadMoreButton';
 import { ScreenImage } from 'components/ScreenImage';
 import { ScreenWrapper } from 'components/ScreenWrapper';
@@ -29,7 +28,7 @@ export const Characters = () => {
     gender: '',
     status: '',
   });
-  const { data, loadMoreCharacters, isNextPage, refetch, networkStatus } = useCharacters();
+  const { data, loadMoreCharacters, isNextPage, refetch, networkStatus, error } = useCharacters();
   const { isFetchMoreLoading, isInitialOrRefetchLoading } = useQueryLoadingStatus(networkStatus);
 
   const handleChange = (e: { target: HTMLInputElement | HTMLSelectElement }, keyofSearchParams: KeyofSearchParams) => {
@@ -50,8 +49,8 @@ export const Characters = () => {
         <SelectInput placeholder="Gender" options={GENDER} onChange={(e) => handleChange(e, 'gender')} />
         <SelectInput placeholder="Status" options={STATUS} onChange={(e) => handleChange(e, 'status')} />
       </InputsWrapper>
-      {isInitialOrRefetchLoading ? <Loader /> : <CharactersList characters={data} />}
-      {isNextPage && (
+      <CharactersList characters={data} loading={isInitialOrRefetchLoading} error={error} />
+      {isNextPage && !error && !isInitialOrRefetchLoading && (
         <LoadMoreButton onClick={loadMoreCharacters} loading={isFetchMoreLoading} disabled={isFetchMoreLoading} />
       )}
     </ScreenWrapper>
