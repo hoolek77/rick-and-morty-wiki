@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import locationsLogo from 'assets/locationsLogo.png';
 import { InputsWrapper } from 'components/InputsWrapper';
+import { LoadMoreButton } from 'components/LoadMoreButton';
+import { LocationsList } from 'components/LocationsList';
 import { ScreenImage } from 'components/ScreenImage';
 import { ScreenWrapper } from 'components/ScreenWrapper';
 import { SearchInput as OSearchInput } from 'components/SearchInput';
 import { SelectInput } from 'components/SelectInput';
 import { DIMENSIONS, TYPES } from 'constants/locationsOptions';
 import { useLocations } from 'hooks/useLocations';
+import { useQueryLoadingStatus } from 'hooks/useQueryLoadingStatus';
 import { useSearchForm } from 'hooks/useSearchForm';
 import styled from 'styled-components';
 
@@ -31,9 +34,13 @@ export const Locations = () => {
     type: '',
     dimension: '',
   });
-  const { data } = useLocations();
+  const { data, error, isNextPage, loadMoreLocations, networkStatus, refetch } = useLocations();
+  const { isFetchMoreLoading, isInitialOrRefetchLoading } = useQueryLoadingStatus(networkStatus);
 
-  console.log({ searchParams, data });
+  useEffect(() => {
+    // TODO: add debounce for name changes
+    refetch({ filter: searchParams });
+  }, [searchParams, refetch]);
 
   return (
     <ScreenWrapper>
@@ -43,6 +50,10 @@ export const Locations = () => {
         <SelectInput placeholder="Type" options={TYPES} onChange={(e) => handleChange(e, 'type')} />
         <SelectInput placeholder="Dimension" options={DIMENSIONS} onChange={(e) => handleChange(e, 'dimension')} />
       </InputsWrapper>
+      <LocationsList locations={data} loading={isInitialOrRefetchLoading} error={error} />
+      {isNextPage && !error && !isInitialOrRefetchLoading && (
+        <LoadMoreButton onClick={loadMoreLocations} loading={isFetchMoreLoading} disabled={isFetchMoreLoading} />
+      )}
     </ScreenWrapper>
   );
 };
