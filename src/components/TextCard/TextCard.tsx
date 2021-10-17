@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { buttonAnimation } from 'animations/buttons';
 import styled from 'styled-components';
@@ -7,6 +8,8 @@ interface Props {
   title: string;
   description: string;
   additionalInfo?: string;
+  id: string;
+  path: string;
 }
 
 const Wrapper = styled.div`
@@ -41,12 +44,16 @@ const AdditionalInfo = styled.h3`
   color: rgba(0, 0, 0, 0.6);
 `;
 
-export const TextCard = ({ title, description, additionalInfo }: Props) => {
+export const TextCard = ({ title, description, additionalInfo, path, id }: Props) => {
+  const route = `${path}/${id}`;
+
   return (
-    <Wrapper>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
-      {additionalInfo && <AdditionalInfo>{additionalInfo}</AdditionalInfo>}
-    </Wrapper>
+    <Link to={route}>
+      <Wrapper>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        {additionalInfo && <AdditionalInfo>{additionalInfo}</AdditionalInfo>}
+      </Wrapper>
+    </Link>
   );
 };

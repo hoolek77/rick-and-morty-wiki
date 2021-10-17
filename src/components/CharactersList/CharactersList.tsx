@@ -9,11 +9,12 @@ import { CharactersResult } from 'hooks/useCharacters';
 
 interface Props {
   characters: CharactersResult[];
-  loading: boolean;
+  title?: string;
+  loading?: boolean;
   error?: ApolloError;
 }
 
-export const CharactersList = ({ characters, loading, error }: Props) => {
+export const CharactersList = ({ characters, loading, error, title }: Props) => {
   if (loading) {
     return <Loader />;
   }
@@ -23,7 +24,7 @@ export const CharactersList = ({ characters, loading, error }: Props) => {
   }
 
   return (
-    <ListWrapper>
+    <ListWrapper title={title}>
       {characters?.map((character) => {
         return <CharacterCard {...character} key={character.id} />;
       })}

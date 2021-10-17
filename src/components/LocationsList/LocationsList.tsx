@@ -25,7 +25,7 @@ export const LocationsList = ({ locations, loading, error }: Props) => {
   return (
     <ListWrapper>
       {locations?.map(({ id, name, type }) => {
-        return <TextCard title={name} description={type} key={id} />;
+        return <TextCard title={name} description={type} id={id} path="locations" key={id} />;
       })}
     </ListWrapper>
   );

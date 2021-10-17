@@ -6,6 +6,7 @@ import { Menu } from 'components/Menu';
 import { CharacterDetails } from 'screens/CharacterDetails';
 import { Characters } from 'screens/Characters';
 import { Episodes } from 'screens/Episodes';
+import { LocationDetails } from 'screens/LocationDetails';
 import { Locations } from 'screens/Locations';
 
 export const App = () => {
@@ -24,6 +25,9 @@ export const App = () => {
         </Route>
         <Route path="/locations" exact>
           <Locations />
+        </Route>
+        <Route path="/locations/:id" exact>
+          <LocationDetails />
         </Route>
         <Route path="/episodes" exact>
           <Episodes />
