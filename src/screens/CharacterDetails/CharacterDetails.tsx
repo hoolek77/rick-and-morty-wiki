@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { CharacterDetailBox } from 'components/CharacterDetailBox';
 import { ErrorMessage } from 'components/ErrorMessage';
@@ -80,7 +81,9 @@ export const CharacterDetails = () => {
             <CharacterDetailBox title="Specie" info={species} />
             <CharacterDetailBox title="Origin" info={origin.name} />
             {type && <CharacterDetailBox title="Type" info={type} />}
-            <CharacterDetailBox title="Location" info={location.name} arrowRight />
+            <Link to={`/locations/${location.id}`}>
+              <CharacterDetailBox title="Location" info={location.name} arrowRight />
+            </Link>
           </Section>
         </div>
         <div>
