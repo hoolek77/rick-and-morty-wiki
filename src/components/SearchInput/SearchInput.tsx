@@ -1,10 +1,11 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import React, { ChangeEventHandler, ComponentPropsWithoutRef } from 'react';
 
 import searchIcon from 'assets/searchIcon.png';
 import styled from 'styled-components';
 
-interface Props extends ComponentPropsWithoutRef<'input'> {
-  wrapperWidth?: string;
+interface Props extends ComponentPropsWithoutRef<'div'> {
+  placeholder: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const Wrapper = styled.div`
@@ -36,10 +37,10 @@ const SearchIcon = styled.img`
   top: 16px;
 `;
 
-export const SearchInput = ({ wrapperWidth, ...props }: Props) => {
+export const SearchInput = ({ placeholder, onChange, ...props }: Props) => {
   return (
-    <Wrapper style={{ width: wrapperWidth }}>
-      <Input type="text" {...props} />
+    <Wrapper {...props}>
+      <Input type="text" placeholder={placeholder} onChange={onChange} />
       <SearchIcon src={searchIcon} alt="search icon" />
     </Wrapper>
   );
