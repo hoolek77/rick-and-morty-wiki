@@ -23,6 +23,15 @@ export const cache = new InMemoryCache({
             };
           },
         },
+        episodes: {
+          keyArgs: false,
+          merge(existing = { results: [] }, incoming) {
+            return {
+              info: incoming.info,
+              results: [...existing.results, ...incoming.results],
+            };
+          },
+        },
       },
     },
   },

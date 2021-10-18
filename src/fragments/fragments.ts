@@ -18,3 +18,13 @@ export const CORE_LOCATION = gql`
     type
   }
 `;
+
+export const CORE_EPISODE = gql`
+  fragment CoreEpisode on Episode {
+    __typename
+    id
+    name
+    airDate: air_date
+    episode
+  }
+`;
