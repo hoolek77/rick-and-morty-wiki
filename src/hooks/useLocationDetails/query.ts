@@ -1,18 +1,16 @@
 import { gql } from '@apollo/client';
+import { CORE_CHARACTER, CORE_LOCATION } from 'fragments';
 
 export const LOCATION_DETAILS_QUERY = gql`
   query LocationDetails($id: ID!) {
     location(id: $id) {
-      id
-      name
-      type
+      ...CoreLocation
       dimension
       residents {
-        id
-        name
-        image
-        species
+        ...CoreCharacter
       }
     }
   }
+  ${CORE_CHARACTER}
+  ${CORE_LOCATION}
 `;

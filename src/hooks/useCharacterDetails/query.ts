@@ -1,13 +1,12 @@
 import { gql } from '@apollo/client';
+import { CORE_CHARACTER } from 'fragments';
 
 export const CHARACTER_DETAILS_QUERY = gql`
   query CharacterDetails($id: ID!) {
     character(id: $id) {
-      id
+      ...CoreCharacter
       gender
-      name
       status
-      species
       origin {
         id
         name
@@ -23,7 +22,7 @@ export const CHARACTER_DETAILS_QUERY = gql`
         air_date
         episode
       }
-      image
     }
   }
+  ${CORE_CHARACTER}
 `;
