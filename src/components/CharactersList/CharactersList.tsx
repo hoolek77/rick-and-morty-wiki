@@ -5,6 +5,7 @@ import { CharacterCard } from 'components/CharacterCard';
 import { ErrorMessage } from 'components/ErrorMessage';
 import { ListWrapper } from 'components/ListWrapper';
 import { Loader } from 'components/Loader';
+import { NOT_FOUND_MESSAGE } from 'constants/errorMessages';
 import { CharactersResult } from 'hooks/useCharacters';
 
 interface Props {
@@ -20,7 +21,7 @@ export const CharactersList = ({ characters, loading, error, title }: Props) => 
   }
 
   if (error) {
-    return <ErrorMessage>There is nothing here 😵‍💫</ErrorMessage>;
+    return <ErrorMessage>{NOT_FOUND_MESSAGE}</ErrorMessage>;
   }
 
   return (

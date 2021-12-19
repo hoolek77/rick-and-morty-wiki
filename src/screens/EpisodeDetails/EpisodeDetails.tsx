@@ -5,7 +5,7 @@ import { ErrorInfo } from 'components/ErrorInfo';
 import { Loader } from 'components/Loader';
 import { ScreenWrapper } from 'components/ScreenWrapper';
 import { MAIN_BREAKPOINT } from 'constants/breakpoints';
-import { useLocationDetails } from 'hooks/useLocationDetails';
+import { useEpisodeDetails } from 'hooks/useEpisodeDetails';
 import styled from 'styled-components';
 import { getIdFromPathname } from 'utils/strings';
 
@@ -16,7 +16,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const LocationAdditionalInfoWrapper = styled.div`
+const EpisodeAdditionalInfoWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   width: 50%;
@@ -26,7 +26,7 @@ const LocationAdditionalInfoWrapper = styled.div`
   }
 `;
 
-const LocationInfoWrapper = styled.div`
+const EpisodeInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -41,9 +41,9 @@ const Info = styled.h3`
   color: #6e798c;
 `;
 
-export const LocationDetails = () => {
+export const EpisodeDetails = () => {
   const id = getIdFromPathname();
-  const { data, error, loading } = useLocationDetails({ id });
+  const { data, error, loading } = useEpisodeDetails({ id });
 
   if (loading) {
     return (
@@ -53,26 +53,26 @@ export const LocationDetails = () => {
     );
   }
 
-  if (error || !data || !data.location) {
+  if (error || !data || !data.episode) {
     return <ErrorInfo />;
   }
 
-  const { name, type, dimension, residents } = data.location;
+  const { name, characters, episode, air_date: airDate } = data.episode;
 
   return (
     <ScreenWrapper>
       <Title>{name}</Title>
-      <LocationAdditionalInfoWrapper>
-        <LocationInfoWrapper>
-          <InfoTitle>Type</InfoTitle>
-          <Info>{type}</Info>
-        </LocationInfoWrapper>
-        <LocationInfoWrapper>
-          <InfoTitle>Dimension</InfoTitle>
-          <Info>{dimension}</Info>
-        </LocationInfoWrapper>
-      </LocationAdditionalInfoWrapper>
-      <CharactersList characters={residents} title="Residents" />
+      <EpisodeAdditionalInfoWrapper>
+        <EpisodeInfoWrapper>
+          <InfoTitle>Episode</InfoTitle>
+          <Info>{episode}</Info>
+        </EpisodeInfoWrapper>
+        <EpisodeInfoWrapper>
+          <InfoTitle>Date</InfoTitle>
+          <Info>{airDate}</Info>
+        </EpisodeInfoWrapper>
+      </EpisodeAdditionalInfoWrapper>
+      <CharactersList characters={characters} title="Cast" />
     </ScreenWrapper>
   );
 };

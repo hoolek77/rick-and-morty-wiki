@@ -5,6 +5,7 @@ import { Footer } from 'components/Footer';
 import { Menu } from 'components/Menu';
 import { CharacterDetails } from 'screens/CharacterDetails';
 import { Characters } from 'screens/Characters';
+import { EpisodeDetails } from 'screens/EpisodeDetails';
 import { Episodes } from 'screens/Episodes';
 import { LocationDetails } from 'screens/LocationDetails';
 import { Locations } from 'screens/Locations';
@@ -31,6 +32,9 @@ export const App = () => {
         </Route>
         <Route path="/episodes" exact>
           <Episodes />
+        </Route>
+        <Route path="/episodes/:id" exact>
+          <EpisodeDetails />
         </Route>
       </Switch>
       <Footer />

@@ -5,6 +5,7 @@ import { ErrorMessage } from 'components/ErrorMessage';
 import { ListWrapper } from 'components/ListWrapper';
 import { Loader } from 'components/Loader';
 import { TextCard } from 'components/TextCard';
+import { NOT_FOUND_MESSAGE } from 'constants/errorMessages';
 import { AllEpisodesEpisodesResults } from 'hooks/useEpisodes';
 
 interface Props {
@@ -19,7 +20,7 @@ export const EpisodesList = ({ episodes, loading, error }: Props) => {
   }
 
   if (error) {
-    return <ErrorMessage>There is nothing here 😵‍💫</ErrorMessage>;
+    return <ErrorMessage>{NOT_FOUND_MESSAGE}</ErrorMessage>;
   }
 
   return (

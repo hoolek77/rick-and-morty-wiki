@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { CharacterDetailBox } from 'components/CharacterDetailBox';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { ErrorInfo } from 'components/ErrorInfo';
 import { Loader } from 'components/Loader';
 import { ScreenWrapper } from 'components/ScreenWrapper';
 import { useCharacterDetails } from 'hooks/useCharacterDetails';
@@ -59,11 +59,7 @@ export const CharacterDetails = () => {
   }
 
   if (error || !data || !data.character) {
-    return (
-      <ScreenWrapper>
-        <ErrorMessage>There is nothing here 😵‍💫</ErrorMessage>
-      </ScreenWrapper>
-    );
+    return <ErrorInfo />;
   }
 
   const { image, name, gender, status, species, origin, type, location, episode } = data.character;
@@ -89,14 +85,10 @@ export const CharacterDetails = () => {
         <div>
           <SectionTitle>Episodes</SectionTitle>
           <Section>
-            {episode.map(({ air_date, name: episodeName, episode: episodeNumber }) => (
-              <CharacterDetailBox
-                title={episodeNumber}
-                info={episodeName}
-                date={air_date}
-                key={episodeNumber}
-                arrowRight
-              />
+            {episode.map(({ air_date, name: episodeName, episode: episodeNumber, id: episodeId }) => (
+              <Link to={`/locations/${episodeId}`} key={episodeNumber}>
+                <CharacterDetailBox title={episodeNumber} info={episodeName} date={air_date} arrowRight />
+              </Link>
             ))}
           </Section>
         </div>
