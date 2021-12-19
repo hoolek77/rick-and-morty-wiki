@@ -86,7 +86,7 @@ export const CharacterDetails = () => {
           <SectionTitle>Episodes</SectionTitle>
           <Section>
             {episode.map(({ air_date, name: episodeName, episode: episodeNumber, id: episodeId }) => (
-              <Link to={`/locations/${episodeId}`} key={episodeNumber}>
+              <Link to={`/episodes/${episodeId}`} key={episodeNumber}>
                 <CharacterDetailBox title={episodeNumber} info={episodeName} date={air_date} arrowRight />
               </Link>
             ))}
