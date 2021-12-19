@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "yarn typings && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "typings": "rimraf ./src/**/*__generated__ && apollo client:codegen --target=typescript --endpoint=https://rickandmortyapi.com/graphql --globalTypesFile=src/globalTypes.ts",
