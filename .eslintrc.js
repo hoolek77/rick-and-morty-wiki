@@ -138,6 +138,7 @@ module.exports = {
         '*Handlers.ts',
         '**/mocks/*',
         'jest-setup.ts',
+        'vite.config.ts',
       ],
       extends: [
         'plugin:testing-library/react',
